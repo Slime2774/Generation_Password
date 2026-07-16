@@ -10,8 +10,8 @@ namespace GenerationPassword
         {
             Random rnd = new Random();
             StringBuilder password = new StringBuilder();
-            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string specialChars = "1234567890!@#$%^&*()_+-=[]{}|;':\",./<>?";
+            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            string specialChars = "!@#$%^&*()_+-=[]{}|;,./<>?";
 
             Console.WriteLine("Хотите ли вы использовать цифры и спец.знаки");
             Console.Write("Введите ДА или НЕТ: ");
@@ -19,13 +19,14 @@ namespace GenerationPassword
 
             if (answer == "ДА")
             {
+                chars += specialChars;
                 for (int i = 0; i < length; i++)
                 {
-                    password.Append(chars[rnd.Next(chars.Length)] + specialChars[rnd.Next(specialChars.Length)]);
+                    password.Append(chars[rnd.Next(chars.Length)]);
                 }
                 return password.ToString();
             }
-            else 
+            else if (answer == "НЕТ")
             {
                 for (int i = 0; i < length; i++)
                 {
@@ -33,7 +34,7 @@ namespace GenerationPassword
                 }
                 return password.ToString();
             }
-
+            return "Неверный ввод. Пожалуйста, введите ДА или НЕТ.";
         }
     }
 }
