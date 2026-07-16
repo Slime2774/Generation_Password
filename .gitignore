@@ -1,0 +1,9 @@
+# Временные файлы Visual Studio
+.vs/
+[Dd]ebug/
+[Rr]elease/
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
